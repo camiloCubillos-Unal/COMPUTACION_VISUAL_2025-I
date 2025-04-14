@@ -16,73 +16,19 @@ Las transformaciones geométricas se implementan utilizando matrices de transfor
 
 La matriz de traslación mueve un punto $(x, y)$ por un desplazamiento $(t_x, t_y)$:
 
-$$
-\begin{bmatrix}
-1 & 0 & t_x \\
-0 & 1 & t_y \\
-0 & 0 & 1 \\
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-x \\
-y \\
-1 \\
-\end{bmatrix}
-=
-\begin{bmatrix}
-x + t_x \\
-y + t_y \\
-1 \\
-\end{bmatrix}
-$$
+$$ \begin{bmatrix} 1 & 0 & t_x \\\ 0 & 1 & t_y \\\ 0 & 0 & 1 \\\ \end{bmatrix} \cdot \begin{bmatrix} x \\\ y \\\ 1 \\\ \end{bmatrix} = \begin{bmatrix} x + t_x \\\ y + t_y \\\ 1 \\\ \end{bmatrix} $$
 
 #### Rotación
 
 La matriz de rotación gira un punto alrededor del origen por un ángulo $\theta$:
 
-$$
-\begin{bmatrix}
-\cos\theta & -\sin\theta & 0 \\
-\sin\theta & \cos\theta & 0 \\
-0 & 0 & 1 \\
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-x \\
-y \\
-1 \\
-\end{bmatrix}
-=
-\begin{bmatrix}
-x\cos\theta - y\sin\theta \\
-x\sin\theta + y\cos\theta \\
-1 \\
-\end{bmatrix}
-$$
+$$ \begin{bmatrix} \cos\theta & -\sin\theta & 0 \\\ \sin\theta & \cos\theta & 0 \\\ 0 & 0 & 1 \\\ \end{bmatrix} \cdot \begin{bmatrix} x \\\ y \\\ 1 \\\ \end{bmatrix} = \begin{bmatrix} x\cos\theta - y\sin\theta \\\ x\sin\theta + y\cos\theta \\\ 1 \\ \end{bmatrix} $$
 
 #### Escalado
 
 La matriz de escalado cambia el tamaño de un objeto por factores $s_x$ y $s_y$:
 
-$$
-\begin{bmatrix}
-s_x & 0 & 0 \\
-0 & s_y & 0 \\
-0 & 0 & 1 \\
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-x \\
-y \\
-1 \\
-\end{bmatrix}
-=
-\begin{bmatrix}
-s_x \cdot x \\
-s_y \cdot y \\
-1 \\
-\end{bmatrix}
-$$
+$$ \begin{bmatrix} s_x & 0 & 0 \\\ 0 & s_y & 0 \\\ 0 & 0 & 1 \\\ \end{bmatrix} \cdot \begin{bmatrix} x \\\ y \\\ 1 \\\ \end{bmatrix} = \begin{bmatrix} s_x \cdot x \\\ s_y \cdot y \\\ 1 \\\ \end{bmatrix} $$
 
 ## Explicación del código
 
