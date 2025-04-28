@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Estilos personalizados para Leva */
+:root {
+  --leva-sizes-rootWidth: 320px;
+  --leva-sizes-controlWidth: 100%;
+  --leva-sizes-dragWidth: 4px;
+  --leva-sizes-monitorHeight: 60px;
+  --leva-sizes-numberInputMinWidth: 36px;
+  --leva-sizes-scrubberWidth: 8px;
+  --leva-sizes-scrubberHeight: 16px;
+  --leva-sizes-rowHeight: 32px;
+  --leva-sizes-folderMarginTop: 12px;
+  --leva-sizes-folderTitleHeight: 30px;
+  --leva-sizes-checkboxSize: 16px;
+  --leva-sizes-joystickWidth: 100px;
+  --leva-sizes-joystickHeight: 100px;
+  --leva-sizes-xypadWidth: 100px;
+  --leva-sizes-xypadHeight: 100px;
+  --leva-sizes-tooltipSize: 8px;
+  --leva-sizes-buttonHeight: 24px;
+  --leva-colors-elevation1: #222;
+  --leva-colors-elevation2: #333;
+  --leva-colors-elevation3: #444;
+  --leva-colors-accent1: #0066ff;
+  --leva-colors-accent2: #0055dd;
+  --leva-colors-accent3: #0044aa;
+  --leva-radii-xs: 2px;
+  --leva-radii-sm: 4px;
+  --leva-radii-lg: 6px;
+  --leva-space-sm: 1px;
+  --leva-space-md: 2px;
+  --leva-space-lg: 3px;
+  --leva-space-xl: 4px;
+  --leva-fonts-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --leva-shadows-level1: 0 0 9px 0 #00000055;
+  --leva-shadows-level2: 0 4px 14px #00000033;
+}
+
+/* Ocultar la barra lateral izquierda */
+div[class*="leva__"] > div:first-child {
+  display: none !important;
+}
+
+/* Estilos para el panel de Leva */
+.leva-container {
+  margin-top: 0;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Panel informativo */
+.info-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 300px;
+  font-family: Arial, sans-serif;
+  z-index: 10;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-overlay h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 5px;
+}
+
+.info-overlay p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.info-overlay ul {
+  list-style: none;
+  margin: 10px 0;
+  padding-left: 5px;
+}
+
+.info-overlay ul li {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.info-overlay ul li span {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.info-overlay .tip {
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 10px;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
