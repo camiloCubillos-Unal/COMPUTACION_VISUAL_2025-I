@@ -1,6 +1,13 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,node,processing,unity
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,python,node,processing,unity
 
+### Custom Ignores ###
+
+## Python venvs
+
+**/.visualizador_3d_env
+
+
 ### Node ###
 # Logs
 logs
