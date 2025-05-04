@@ -124,11 +124,3 @@ def fill_triangle(p1, p2, p3):
 Este taller me permitió profundizar en los fundamentos matemáticos y algorítmicos que sustentan la generación de gráficos por computadora. Al implementar estos algoritmos desde cero, he logrado comprender cómo las técnicas de rasterización transforman representaciones matemáticas en píxeles discretos.
 
 ---
-
-## 👥 Contribuciones Grupales (si aplica)
-
-```markdown
-- Implementé los algoritmos de rasterización básica en Python
-- Desarrollé la visualización interactiva y las animaciones
-- Documenté el proceso y generé los GIFs demostrativos
-```
