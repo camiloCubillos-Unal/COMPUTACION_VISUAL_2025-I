@@ -1,0 +1,13 @@
+body, html, #root {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background-color: #222;
+}
+
+.leva-container {
+  position: fixed !important;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+}
