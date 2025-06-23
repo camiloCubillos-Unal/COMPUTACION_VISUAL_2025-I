@@ -3,6 +3,8 @@
 
 ### Custom Ignores ###
 
+*.pt
+
 ## Python venvs
 
 **/.visualizador_3d_env
