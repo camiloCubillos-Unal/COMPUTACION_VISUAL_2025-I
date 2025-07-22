@@ -1,164 +1,209 @@
-# 🧪 Taller: Cámara en Vivo - Procesamiento en Tiempo Real con YOLO y OpenCV
+# 🧪 Taller: Cámara en Vivo - Captura y Procesamiento en Tiempo Real con YOLO y OpenCV
 
-## 📅 Fecha
-`2025-06-25`
+## 🔍 Descripción del Proyecto
 
----
+Este proyecto implementa una aplicación en Python que captura video en tiempo real desde la webcam, procesa cada cuadro con filtros visuales clásicos de visión por computador, e integra un modelo YOLO preentrenado para detección de objetos en vivo. El sistema es completamente interactivo, visualmente claro y diseñado de forma modular siguiendo principios SOLID.
 
-## 🎯 Objetivo del Taller
+## 🧰 Tecnologías Utilizadas
 
-Desarrollar una aplicación completa de visión por computador que capture video en tiempo real desde webcam, aplique filtros clásicos de procesamiento de imágenes e integre detección de objetos usando YOLOv8. El sistema debe ser interactivo, visualmente moderno y educativo, demostrando conceptos fundamentales de visión artificial con una interfaz gráfica profesional.
+- **Python 3.8+**: Lenguaje de programación principal
+- **OpenCV**: Procesamiento de video e imagen en tiempo real
+- **NumPy**: Computación numérica eficiente
+- **Ultralytics YOLOv8**: Detección de objetos en tiempo real
+- **PyTorch**: Framework de deep learning para YOLO
 
----
-
-## 🧠 Conceptos Aprendidos
-
-Lista los principales conceptos aplicados:
-
-- [x] Captura y procesamiento de video en tiempo real
-- [x] Filtros clásicos de visión por computador (escala de grises, binarización, detección de bordes)
-- [x] Detección de objetos con modelos YOLO preentrenados
-- [x] Interfaces gráficas modernas con tkinter y tema oscuro
-- [x] Threading para procesamiento concurrente
-- [x] Integración de modelos de deep learning con aplicaciones interactivas
-- [x] Arquitectura modular siguiendo principios SOLID
-
----
-
-## 🔧 Herramientas y Entornos
-
-Especifica los entornos usados:
-
-- **Python** (`opencv-python`, `ultralytics`, `numpy`, `tkinter`, `PIL`, `torch`)
-- **Modelos**: YOLOv8 Nano para detección de objetos en tiempo real
-- **GUI**: tkinter con tema oscuro personalizado
-- **Procesamiento**: OpenCV para filtros y transformaciones
-
-📌 Todas las dependencias están especificadas en `requirements.txt`
-
----
-
-## 📁 Estructura del Proyecto
+## 📦 Estructura del Proyecto
 
 ```
 2025-06-25_taller_camara_en_vivo_yolo_opencv/
 ├── python/
-│   └── main.py           # Aplicación principal con GUI
-├── requirements.txt      # Dependencias del proyecto
-└── README.md            # Documentación completa
+│   └── main.py              # Código principal de la aplicación
+├── requirements.txt         # Dependencias del proyecto
+└── README.md               # Documentación del proyecto
 ```
 
----
+## 🚀 Instalación y Configuración
 
-## 🧪 Implementación
+### 1. Clonar o descargar el proyecto
 
-### 🔹 Etapas realizadas
-
-1. **Configuración del entorno**: Instalación de OpenCV, YOLOv8 y dependencias
-2. **Captura de video**: Acceso a webcam con configuración optimizada
-3. **Filtros de procesamiento**: Implementación de filtros clásicos modulares
-4. **Integración YOLO**: Detección de objetos con visualización en tiempo real
-5. **Interfaz gráfica**: GUI moderna con tema oscuro y controles interactivos
-6. **Threading**: Procesamiento concurrente para mantener fluidez
-
-### 🔹 Código relevante
-
-Núcleo del sistema de detección YOLO integrado:
-
-```python
-def detect_objects(self, frame):
-    if self.model is None:
-        return frame
-        
-    results = self.model(frame, verbose=False)
-    annotated_frame = frame.copy()
-    current_objects = {}
-    
-    for result in results:
-        boxes = result.boxes
-        if boxes is not None:
-            for box in boxes:
-                x1, y1, x2, y2 = map(int, box.xyxy[0])
-                confidence = float(box.conf[0])
-                class_id = int(box.cls[0])
-                class_name = self.model.names[class_id]
-                
-                if confidence > 0.5:
-                    current_objects[class_name] = current_objects.get(class_name, 0) + 1
-                    cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                    
-                    label = f"{class_name}: {confidence:.2f}"
-                    cv2.putText(annotated_frame, label, (x1, y1 - 5), 
-                              cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
-    
-    return annotated_frame
+```bash
+git clone <repository-url>
+cd 2025-06-25_taller_camara_en_vivo_yolo_opencv
 ```
 
-Aplicación modular de filtros con arquitectura extensible:
+### 2. Crear entorno virtual (recomendado)
 
-```python
-def process_frame(self, frame):
-    if self.current_filter == 'grayscale':
-        processed = self.apply_grayscale_filter(frame)
-        processed = cv2.cvtColor(processed, cv2.COLOR_GRAY2BGR)
-    elif self.current_filter == 'binary':
-        processed = self.apply_binary_filter(frame)
-        processed = cv2.cvtColor(processed, cv2.COLOR_GRAY2BGR)
-    elif self.current_filter == 'edges':
-        processed = self.apply_edge_detection(frame)
-        processed = cv2.cvtColor(processed, cv2.COLOR_GRAY2BGR)
-    elif self.current_filter == 'yolo':
-        processed = self.detect_objects(frame)
-    else:
-        processed = frame.copy()
-    
-    return processed
+```bash
+python -m venv venv
+source venv/bin/activate  # En Windows: venv\Scripts\activate
 ```
 
----
+### 3. Instalar dependencias
 
-## 📊 Resultados Visuales
+```bash
+pip install -r requirements.txt
+```
 
-### 🖥️ Interfaz Gráfica Moderna
+### 4. Ejecutar la aplicación
 
-La aplicación cuenta con una **interfaz gráfica unificada de 1280x720px** con tema oscuro profesional:
+```bash
+cd python
+python main.py
+```
 
-![output.gif](resultados/output.gif)
+## 🎮 Controles de la Aplicación
 
-### 🎮 Funcionalidades Implementadas
+| Tecla | Función |
+|-------|---------|
+| **1** | Activar filtro de escala de grises |
+| **2** | Activar filtro de binarización |
+| **3** | Activar filtro de detección de bordes (Canny) |
+| **D** | Activar/desactivar detección YOLO |
+| **Espacio** | Pausar/reanudar procesamiento |
+| **S** | Capturar imagen actual |
+| **Q** | Salir de la aplicación |
 
-**Filtros Disponibles:**
-- **Original**: Stream directo de webcam
-- **Escala de Grises**: Conversión a monocromático
-- **Binario**: Binarización con umbral fijo
-- **Bordes**: Detección de bordes con algoritmo Canny
-- **Blur**: Suavizado gaussiano
-- **YOLO**: Detección de objetos con bounding boxes
+## 🖥️ Ventanas de Visualización
 
-**Controles Interactivos:**
-- Botones GUI: Iniciar, Pausar, Capturar, Ayuda
-- Teclas rápidas: g, b, e, l, o, y, p, s, h, q
-- Selección de filtros con radio buttons
+La aplicación muestra tres ventanas simultáneas:
+
+1. **Original + Info**: Video original con panel de información y controles
+2. **Filtro**: Vista del filtro seleccionado aplicado al video
+3. **Detección YOLO**: Video con detección de objetos y bounding boxes
+
+## 📋 Funcionalidades Implementadas
+
+### ✅ Captura de Video en Tiempo Real
+- Acceso a webcam usando `cv2.VideoCapture(0)`
+- Procesamiento frame por frame en bucle continuo
+- Resolución optimizada (640x480) para mejor rendimiento
+
+### ✅ Filtros Visuales Clásicos
+- **Escala de Grises**: Conversión a imagen monocromática
+- **Binarización**: Threshold adaptativo para imagen binaria
+- **Detección de Bordes**: Algoritmo Canny para contornos
+
+### ✅ Detección de Objetos con YOLO
+- Integración de YOLOv8 nano (yolov8n.pt) para máxima velocidad
+- Visualización de bounding boxes con etiquetas de clase
+- Umbral de confianza configurable (0.5 por defecto)
+- Toggle on/off en tiempo real
+
+### ✅ Interacción Avanzada
+- Cambio dinámico de filtros sin interrumpir el video
+- Pausa/reanudación del procesamiento
 - Captura de imágenes con timestamp
+- Panel de información overlay con estado actual
+
+## 🏗️ Arquitectura del Código
+
+El proyecto implementa **principios SOLID** con una arquitectura modular:
+
+### Patrón Strategy para Filtros
+```python
+class FilterStrategy(ABC):
+    @abstractmethod
+    def apply(self, frame: np.ndarray) -> np.ndarray: pass
+    
+    @abstractmethod
+    def get_name(self) -> str: pass
+```
+
+### Clases Principales
+
+- **`FilterStrategy`**: Interfaz abstracta para filtros
+- **`GrayscaleFilter`**: Implementación de escala de grises
+- **`BinaryFilter`**: Implementación de binarización
+- **`EdgeDetectionFilter`**: Implementación de detección de bordes
+- **`YOLODetector`**: Manejador de detección de objetos
+- **`VideoProcessor`**: Orquestador principal del sistema
+
+## 🔧 Configuración Avanzada
+
+### Modificar Parámetros de Filtros
+
+```python
+# Cambiar umbral de binarización
+BinaryFilter(threshold=100)
+
+# Ajustar sensibilidad de detección de bordes
+EdgeDetectionFilter(lower_threshold=30, upper_threshold=100)
+```
+
+### Cambiar Modelo YOLO
+
+```python
+# Usar modelo más preciso (pero más lento)
+detector = YOLODetector("yolov8s.pt")  # Small
+detector = YOLODetector("yolov8m.pt")  # Medium
+detector = YOLODetector("yolov8l.pt")  # Large
+```
+
+## 🐛 Resolución de Problemas
+
+### Error: No se pudo abrir la cámara
+- Verificar que no hay otras aplicaciones usando la webcam
+- Probar con índice de cámara diferente: `VideoCapture(1)`
+- Verificar permisos de cámara en el sistema operativo
+
+### Error: Modelo YOLO no encontrado
+- Asegurar conexión a internet para descarga automática
+- El modelo se descarga automáticamente en la primera ejecución
+- Verificar espacio en disco disponible
+
+### Rendimiento lento
+- Usar modelo YOLO más pequeño (yolov8n.pt)
+- Reducir resolución de cámara
+- Cerrar otras aplicaciones que consuman GPU/CPU
+
+## 📊 Métricas de Rendimiento
+
+- **FPS esperado**: 15-30 FPS (dependiendo del hardware)
+- **Latencia**: < 100ms para detección YOLO
+- **Memoria RAM**: ~500MB con modelo nano
+- **GPU**: Opcional pero recomendada para mejor rendimiento
+
+## 🎯 Casos de Uso Educativos
+
+### Para Estudiantes
+- Aprender conceptos fundamentales de visión por computador
+- Experimentar con diferentes filtros en tiempo real
+- Entender el funcionamiento de redes neuronales de detección
+- Practicar programación orientada a objetos con Python
+
+### Para Profesores
+- Demostrar conceptos teóricos de forma práctica
+- Comparar diferentes técnicas de procesamiento de imagen
+- Mostrar aplicaciones reales de inteligencia artificial
+- Base para proyectos más avanzados
+
+## 🔮 Extensiones Futuras
+
+- [ ] Agregar más filtros (blur, sharpen, histogram equalization)
+- [ ] Implementar tracking de objetos detectados
+- [ ] Grabación de video con filtros aplicados
+- [ ] Interfaz gráfica con tkinter o PyQt
+- [ ] Soporte para múltiples cámaras simultáneas
+- [ ] Análisis de métricas de rendimiento en tiempo real
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Para contribuir:
+
+1. Fork del repositorio
+2. Crear rama para nueva funcionalidad (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit de cambios (`git commit -am 'Add: nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Crear Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 👨‍💻 Autor
+
+Desarrollado como material educativo para el taller de Visión por Computador y Deep Learning.
 
 ---
 
-## 💬 Reflexión Final
-
-Este taller ha sido fundamental para comprender la integración práctica entre visión por computador clásica y modelos modernos de deep learning. La implementación de filtros tradicionales como escala de grises y detección de bordes junto con YOLOv8 demuestra la evolución y complementariedad de las técnicas en visión artificial.
-
-La parte más compleja fue la optimización del rendimiento en tiempo real, balanceando la calidad de procesamiento con la fluidez de la interfaz. El threading concurrente y la gestión eficiente de memoria fueron cruciales para mantener ~30 FPS. La experiencia de crear una GUI moderna con tema oscuro también amplió mis conocimientos en diseño de interfaces profesionales.
-
-Para futuros proyectos, implementaría tracking persistente de objetos, soporte para múltiples modelos YOLO especializados, y configuración dinámica de parámetros. También exploraría la integración con cámaras IP y el procesamiento distribuido para aplicaciones de mayor escala.
-
----
-
-## ✅ Checklist de Entrega
-
-- [x] Carpeta `2025-06-25_taller_camara_en_vivo_yolo_opencv`
-- [x] Código limpio y funcional con arquitectura modular
-- [x] Interfaz gráfica moderna con tema oscuro
-- [x] Sistema completo de captura, filtros y detección YOLO
-- [x] Documentación completa y técnica
-- [x] Gestión de dependencias con requirements.txt
-- [x] Commits descriptivos en inglés
+**¡Disfruta experimentando con visión por computador en tiempo real! 🚀** 
